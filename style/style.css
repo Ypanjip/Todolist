@@ -1,0 +1,186 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: url('bg.jpg') no-repeat center center/cover;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 700px;
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+}
+
+.header a {
+    color: #ff3b3b;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #0084ff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #006fd6;
+}
+
+.task {
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    position: relative;
+    
+}
+
+.task input[type="checkbox"] {
+    margin-right: 10px;
+
+}
+
+.task span {
+    font-size: 16px;
+    font-weight: 500;
+    
+}
+
+.task small {
+    display: block;
+    color: #777;
+    font-size: 12px;
+    
+}
+
+.task-actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px; /* Beri jarak antar tombol */
+    margin-top: 5px; /* Beri sedikit jarak dari teks */
+
+}
+
+.task-actions a {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+
+}
+.task-label.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.btn-edit {
+    background-color: #007bff; /* Biru untuk Edit */
+}
+
+.btn-delete {
+    background-color: #dc3545; /* Merah untuk Hapus */
+}
+
+
+.task a:hover {
+    text-decoration: underline;
+}
+
+/* Subtasks */
+.subtask {
+    margin-left: 20px;
+    padding: 5px;
+    background: #eee;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 5px;
+    
+}
+
+.subtask input[type="checkbox"] {
+    margin-right: 8px;
+    text-decoration: line-through;  
+}
+
+.subtask a {
+    font-size: 12px;
+    color: #ff3b3b;
+}
+
+.subtask a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .container {
+        width: 90%;
+    }
+}
+.edit-btn {
+    background-color: #ffa500;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.edit-btn:hover {
+    background-color: #ff8700;
+}
+
+
+.btn-edit {
+    background-color: #007bff; /* Warna biru untuk edit */
+}
+
+.btn-delete {
+    background-color: #dc3545; /* Warna merah untuk hapus */
+}

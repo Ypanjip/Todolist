@@ -1,0 +1,71 @@
+/* Styling container utama */
+body {
+    font-family: Arial, sans-serif;
+    background: url('bg.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+.center {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 350px;
+}
+
+/* Styling untuk input */
+input[type="text"], 
+input[type="password"] {
+    width: 250px;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Tombol dan link sejajar */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+/* Styling untuk tombol */
+button, .login-link {
+    flex: 1; /* Biar sama besar */
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+/* Tombol Register */
+button {
+    background: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #555;
+}
+
+/* Link Login */
+.login-link {
+    background: #007bff;
+    color: white;
+    line-height: 38px; /* Biar sejajar dengan tombol */
+    border: none;
+    margin-left: 10px;
+}
+
+.login-link:hover {
+    background: #0056b3;
+}
