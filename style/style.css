@@ -13,8 +13,9 @@ body {
     background-size: cover;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start; /* Ubah dari center ke flex-start agar konten dimulai dari atas */
+    min-height: 100vh; /* Ubah height menjadi min-height agar body bisa meluas */
+    padding: 20px;
 }
 
 .container {
@@ -22,12 +23,22 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    width: 700px;
+    width: 100%;
+    max-width: 800px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    /* Hapus height: 90vh agar konten bisa meluas */
 }
 
 .header {
     margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 1000;
 }
 
 .header h2 {
@@ -40,6 +51,18 @@ body {
     color: #ff3b3b;
     text-decoration: none;
     font-size: 14px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    /* Hapus flex: 1 dan overflow: hidden agar konten bisa meluas */
+}
+
+.task-list {
+    padding: 10px;
+    margin-top: 10px;
+    /* Hapus max-height dan overflow-y agar semua tugas terlihat */
 }
 
 form {
@@ -78,33 +101,28 @@ button:hover {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: left;
     position: relative;
-    
 }
 
 .task input[type="checkbox"] {
     margin-right: 10px;
-
 }
 
 .task span {
     font-size: 16px;
     font-weight: 500;
-    
 }
 
 .task small {
     display: block;
     color: #777;
     font-size: 12px;
-    
 }
 
 .task-actions {
     display: flex;
     justify-content: flex-start;
-    gap: 8px; /* Beri jarak antar tombol */
-    margin-top: 5px; /* Beri sedikit jarak dari teks */
-
+    gap: 8px;
+    margin-top: 5px;
 }
 
 .task-actions a {
@@ -112,21 +130,17 @@ button:hover {
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 14px;
-
-}
-.task-label.completed {
-    text-decoration: line-through;
-    color: gray;
 }
 
 .btn-edit {
-    background-color: #007bff; /* Biru untuk Edit */
+    background-color: #007bff;
+    color: white;
 }
 
 .btn-delete {
-    background-color: #dc3545; /* Merah untuk Hapus */
+    background-color: #dc3545;
+    color: white;
 }
-
 
 .task a:hover {
     text-decoration: underline;
@@ -140,12 +154,10 @@ button:hover {
     border-radius: 5px;
     font-size: 14px;
     margin-top: 5px;
-    
 }
 
 .subtask input[type="checkbox"] {
     margin-right: 8px;
-    text-decoration: line-through;  
 }
 
 .subtask a {
@@ -157,30 +169,55 @@ button:hover {
     text-decoration: underline;
 }
 
+/* Notification Box */
+.notification-box {
+    background-color: #FFC107;
+    padding: 10px;
+    border-radius: 5px;
+    color: #000;
+    font-size: 14px;
+    margin: 10px 0;
+    width: 100%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.notification-box ul {
+    margin: 0;
+    padding-left: 15px;
+}
+
+.notification-box .notif-icon {
+    font-size: 18px;
+}
+
 /* Responsive */
 @media (max-width: 480px) {
     .container {
-        width: 90%;
+        width: 100%;
+        padding: 10px;
     }
-}
-.edit-btn {
-    background-color: #ffa500;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-right: 5px;
-}
 
-.edit-btn:hover {
-    background-color: #ff8700;
-}
+    .header h2 {
+        font-size: 20px;
+    }
 
+    .task span {
+        font-size: 14px;
+    }
 
-.btn-edit {
-    background-color: #007bff; /* Warna biru untuk edit */
-}
+    .task small {
+        font-size: 10px;
+    }
 
-.btn-delete {
-    background-color: #dc3545; /* Warna merah untuk hapus */
+    .task-actions a {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+
+    .subtask {
+        font-size: 12px;
+    }
 }

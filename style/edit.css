@@ -13,7 +13,7 @@ body {
     width: 100%;
     max-width: 500px;
     background: rgba(255, 255, 255, 0.95);
-    padding: 50px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -24,42 +24,83 @@ h2, h3 {
     margin-bottom: 10px;
 }
 
+p {
+    margin-bottom: 20px;
+}
+
 label {
     font-weight: bold;
     display: block;
     margin-top: 10px;
+    text-align: left;
 }
 
-input, select {
+input {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .button-container {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
-button {
+.save-btn {
     width: 100%;
-    background: #333;
+    background: #007BFF; /* Biru seperti tombol utama di halaman utama */
     color: white;
     padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
 }
 
-button:hover {
-    background: #555;
+.save-btn:hover {
+    background: #0056b3;
+}
+
+.back-btn {
+    width:480px;
+    background: #6c757d; /* Abu-abu seperti tombol Cari di halaman utama */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    font-size: 16px;
+}
+
+.back-btn:hover {
+    background: #5a6268;
+}
+
+.add-subtask-btn {
+    background-color: #28a745; /* Hijau seperti tombol + Subtugas */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.add-subtask-btn:hover {
+    background-color: #218838;
 }
 
 .subtask-container {
-    background: #f9f9f9;
+    background: #e9ecef;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
+    text-align: left;
 }
