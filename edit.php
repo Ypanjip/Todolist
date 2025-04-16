@@ -1,25 +1,22 @@
 <?php
 session_start();
-include 'koneksi.php'; // Pastikan koneksi ke database benar
+include 'koneksi.php'; 
 
-// Cek apakah pengguna sudah login
 if (!isset($_SESSION['user'])) {
     echo "<script>alert('Silakan login terlebih dahulu!'); window.location.href='login.php';</script>";
     exit();
 }
 
-// Ambil ID pengguna yang sedang login
 $user_id = $_SESSION['user']['id'];
 
 // Cek apakah ada taskid atau subtaskid di URL
 $taskid = isset($_GET['taskid']) ? $_GET['taskid'] : null;
 $subtaskid = isset($_GET['subtaskid']) ? $_GET['subtaskid'] : null;
 
-$editType = ''; // Menyimpan tipe yang diedit (task atau subtask)
-$data = []; // Menyimpan data yang akan diedit
+$editType = ''; // nyimpen tipe yang di edit (task atau subtask)
+$data = []; // nyimpen data yg diedit
 
 if ($taskid) {
-    // Ambil data tugas berdasarkan taskid dan user_id
     $query = "SELECT * FROM tasks WHERE taskid = ? AND id = ? LIMIT 1";
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, "ii", $taskid, $user_id);
@@ -60,7 +57,7 @@ if ($taskid) {
     die("ID tugas atau subtugas tidak ditemukan!");
 }
 
-// Proses update jika form disubmit
+// update kalau tombol simpan dipencet
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $label = mysqli_real_escape_string($conn, $_POST['label']);
 
@@ -71,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_stmt_bind_param($update_stmt, "ssii", $label, $deadline, $taskid, $user_id);
         mysqli_stmt_execute($update_stmt);
 
-        // Update sub-tugas yang sudah ada
+        // Update sub-tugas yang ada
         if (!empty($_POST['subtasks'])) {
             foreach ($_POST['subtasks'] as $subtask_id => $subtask_label) {
                 $update_subtask_query = "UPDATE subtasks SET subtasklabel = ? WHERE subtaskid = ? AND taskid = ?";
@@ -81,10 +78,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
-        // Tambahkan sub-tugas baru jika ada
+        // menambahkan subtugas baru
         if (!empty($_POST['new_subtasks'])) {
             foreach ($_POST['new_subtasks'] as $new_subtask_label) {
-                if (!empty(trim($new_subtask_label))) { // Pastikan sub-tugas tidak kosong
+                if (!empty(trim($new_subtask_label))) { // untuk memastikan sub tugas gak kosong
                     $insert_subtask_query = "INSERT INTO subtasks (taskid, subtasklabel) VALUES (?, ?)";
                     $insert_subtask_stmt = mysqli_prepare($conn, $insert_subtask_query);
                     mysqli_stmt_bind_param($insert_subtask_stmt, "is", $taskid, $new_subtask_label);
@@ -106,7 +103,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "<script>alert('Data berhasil diperbarui!'); window.location.href='index.php';</script>";
 }
 
-// Tentukan tanggal besok untuk atribut min
 $tomorrow = date('Y-m-d', strtotime('+1 day'));
 ?>
 
@@ -122,7 +118,7 @@ $tomorrow = date('Y-m-d', strtotime('+1 day'));
     <div class="container">
         <h2>Edit <?= $editType === 'task' ? 'Tugas' : 'Subtugas' ?></h2>
 
-        <form action="" method="post">
+        <form action="" method="post" onsubmit="return confirm('Simpan perubahan?')">
             <label for="label"><?= $editType === 'task' ? 'Nama Tugas' : 'Nama Subtugas' ?>:</label>
             <input type="text" name="label" id="label" value="<?= htmlspecialchars($data[$editType === 'task' ? 'tasklabel' : 'subtasklabel']) ?>" required>
 
@@ -155,7 +151,7 @@ $tomorrow = date('Y-m-d', strtotime('+1 day'));
         function addSubtask() {
             const subtaskList = document.getElementById('subtask-list');
             const newSubtaskDiv = document.createElement('div');
-            newSubtaskDiv.className = 'subtask-container';
+            newSubtaskDiv.className = 'subtasak-container';
 
             const newSubtaskInput = document.createElement('input');
             newSubtaskInput.type = 'text';
